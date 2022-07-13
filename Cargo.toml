@@ -7,6 +7,6 @@ edition = "2021"
 axum = { version = "0.5.10", default-features = false, features = ["http1", "json"] }
 clap = { version = "3.2.11", default-features = false, features = ["std", "color", "derive", "cargo", "wrap_help"] }
 tokio = { version = "1.19.2", default-features = false, features = ["macros"] }
-tower-http = { version = "0.3.4", default-features = false, features = ["fs", "trace"] }
+tower-http = { version = "0.3.4", default-features = false, features = ["fs", "trace", "compression-full"] }
 tracing = { version = "0.1", default-features = false, features = ["std"] }
 tracing-subscriber = { version = "0.3", default-features = false, features = ["fmt", "env-filter"] }

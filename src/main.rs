@@ -5,7 +5,6 @@ use std::io;
 use std::net::SocketAddr;
 use std::path::PathBuf;
 use tower_http::services::ServeDir;
-use tower_http::trace::TraceLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 async fn handle_error(err: io::Error) -> impl IntoResponse {
@@ -38,7 +37,8 @@ async fn main() -> Result<(), axum::BoxError> {
         .serve(
             get_service(ServeDir::new(&args.dir))
                 .handle_error(handle_error)
-                .layer(TraceLayer::new_for_http())
+                .layer(tower_http::compression::CompressionLayer::new())
+                .layer(tower_http::trace::TraceLayer::new_for_http())
                 .into_make_service(),
         )
         .await?;
