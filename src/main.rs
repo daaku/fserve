@@ -1,4 +1,3 @@
-use axum::http::StatusCode;
 use axum::response::IntoResponse;
 use axum::routing::get_service;
 use std::io;
@@ -6,8 +5,7 @@ use std::net::SocketAddr;
 use tower_http::services::ServeDir;
 
 async fn handle_error(err: io::Error) -> impl IntoResponse {
-    eprintln!("error: {}", err);
-    (StatusCode::INTERNAL_SERVER_ERROR, "Something went wrong...")
+    format!("error: {}", err)
 }
 
 #[tokio::main(flavor = "current_thread")]
