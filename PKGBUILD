@@ -1,11 +1,13 @@
 pkgname=fserve
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='quick and lean static file serving'
 arch=(x86_64)
 url=https://github.com/daaku/$pkgname
 
 package() {
+  cd $srcdir/..
+  go build
   install -d $pkgdir/usr/bin
-  install -D -m 755 $srcdir/../target/release/$pkgname $pkgdir/usr/bin/$pkgname
+  install -D -m 755 $srcdir/../$pkgname $pkgdir/usr/bin/$pkgname
 }
