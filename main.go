@@ -24,7 +24,7 @@ func withLogging(h http.Handler) http.Handler {
 func main() {
 	wd, _ := os.Getwd()
 	dir := flag.String("dir", wd, "directory to serve")
-	addr := flag.String("addr", "0.0.0.0:8080", "address to bind to")
+	addr := flag.String("addr", "0.0.0.0:3000", "address to bind to")
 	flag.Parse()
 	fmt.Printf("Serving %s at http://%s/\n", *dir, *addr)
 	h := withLogging(http.FileServer(http.Dir(*dir)))
