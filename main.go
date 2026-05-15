@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"log"
@@ -9,6 +10,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/daaku/lands"
 )
 
 func withLogging(h http.Handler) http.Handler {
@@ -54,7 +57,7 @@ func main() {
 	}
 
 	h := withLogging(http.FileServer(http.Dir(*dir)))
-	if err := http.ListenAndServe(*addr, h); err != nil {
+	if err := lands.ListenAndServe(context.Background(), *addr, h); err != nil {
 		log.Fatal(err)
 	}
 }

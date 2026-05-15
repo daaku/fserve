@@ -1,5 +1,5 @@
 pkgname=fserve
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc='quick and lean static file serving'
 arch=(x86_64)
